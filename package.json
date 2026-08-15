@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "clean": "rimraf dist",
-    "build": "npm run clean && npx @tailwindcss/cli -i ./src/main.css -o ./dist/output.css && webpack --config webpack.prod.ts",
+    "build": "npm run clean && npx @tailwindcss/cli -i ./src/main.css -o ./dist/output.css && NODE_ENV=production webpack --config webpack.prod.ts",
     "build:analyze": "ANALYZE=true npm run build",
     "dev": "webpack serve --config webpack.dev.ts --open",
     "preview": "npm run build && npx serve dist",
