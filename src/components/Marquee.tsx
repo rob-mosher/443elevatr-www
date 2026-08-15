@@ -1,5 +1,5 @@
 import clsx from 'clsx'
-import { motion } from 'framer-motion'
+import { motion, type Variants } from 'motion/react'
 import React from 'react'
 
 type MarqueeProps = {
@@ -12,13 +12,13 @@ export default function Marquee({ isLeftToRight = true, speedMultiplier = 1, tex
   // TODO dynamically take size of below array and x.duration into account
   const baseMarqueeSpeed = 4500 // Base speed of the marquee scroll
 
-  const marqueeVariants = {
+  const marqueeVariants: Variants = {
     animate: {
       x: [0, baseMarqueeSpeed * (isLeftToRight ? -1 : 1) * speedMultiplier],
       transition: {
         x: {
           repeat: Infinity,
-          repeatType: 'loop' as const,
+          repeatType: 'loop',
           duration: 30, // in seconds
           ease: 'linear',
         },
@@ -26,7 +26,7 @@ export default function Marquee({ isLeftToRight = true, speedMultiplier = 1, tex
     },
   }
 
-  const fadeInVariants = {
+  const fadeInVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
