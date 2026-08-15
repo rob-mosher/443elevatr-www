@@ -1,8 +1,29 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
-@import url('https://fonts.googleapis.com/css2?family=Oswald&display=swap');
+/* Oswald is loaded via a <link> in index.html: an @import here lands after the
+   inlined Tailwind rules, where the CSS spec requires browsers to ignore it. */
+
+@theme {
+  --font-sans: Oswald, sans-serif;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
 
 .vignette {
   box-shadow: 0 0 200px rgb(0 0 0 / 60%) inset;
